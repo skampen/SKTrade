@@ -2,6 +2,8 @@ package pojo;
 
 import javax.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "TICKER")
 public class Ticker {
@@ -16,6 +18,9 @@ public class Ticker {
     )
     @Column(name = "ID")
     private int id;
+
+    @Column(name = "CREATEDON")
+    private LocalDateTime createdOn;
 
     @Column(name = "CURRENCYPAIR")
     private String currencyPair;
@@ -41,7 +46,8 @@ public class Ticker {
     public Ticker() {
     }
 
-    public Ticker(String currencyPair, String last, String lowestAsk, String highestBid, String percentChange, String baseVolume, String quoteVolume) {
+    public Ticker(LocalDateTime createdOn, String currencyPair, String last, String lowestAsk, String highestBid, String percentChange, String baseVolume, String quoteVolume) {
+        this.createdOn = createdOn;
         this.currencyPair = currencyPair;
         this.last = last;
         this.lowestAsk = lowestAsk;
@@ -54,6 +60,13 @@ public class Ticker {
     public int getId() {
         return id;
     }
+
+
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn; }
+
+    public void setCreatedOn() { this.createdOn = createdOn; }
 
     public String getCurrencyPair() {
         return currencyPair;
